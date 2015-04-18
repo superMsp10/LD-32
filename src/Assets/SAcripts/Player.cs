@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 	public LayerMask whatGround;
 	public bool grounded = false;
 	public int jumpAmount;
-
+	bool turnR;
 
 
 	void FixedUpdate ()
@@ -24,9 +24,13 @@ public class Player : MonoBehaviour
 	}
 	public  void moveX (float moveX)
 	{
-		float xMove = (moveX * 1);
+		float xMove = (moveX);
 		
-		
+		if (xMove < 0 && turnR) {
+			flip ();
+		} else if (xMove > 0 && !turnR) {
+			flip ();
+		}
 	
 		if (Mathf.Abs (rigidbody2D.velocity.x) < moveSpeed)
 			rigidbody2D.velocity = new Vector2 (xMove + rigidbody2D.velocity.x, rigidbody2D.velocity.y);
@@ -61,6 +65,12 @@ public class Player : MonoBehaviour
 	}
 		
 		
-
+	public virtual void flip ()
+	{
+		turnR = !turnR;
+		Vector3 scale = transform.localScale;
+		scale.x *= -1;
+		transform.localScale = scale;
+	}
 
 }

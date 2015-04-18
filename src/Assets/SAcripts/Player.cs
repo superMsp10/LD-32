@@ -43,4 +43,24 @@ public class Player : MonoBehaviour
 
 	}
 
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		
+		
+	
+		if (other.gameObject.tag == "boost") {
+			collisionBoost thisBoost = other.gameObject.GetComponent<collisionBoost> ();
+			if (thisBoost == null)
+				Debug.LogError ("no collision boost script attached");
+				
+			thisBoost.boost (rigidbody2D);
+		}
+			
+			
+			
+	}
+		
+		
+
+
 }

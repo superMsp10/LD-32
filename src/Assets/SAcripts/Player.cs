@@ -9,17 +9,21 @@ public class Player : MonoBehaviour
 	public bool grounded = false;
 	public int jumpAmount;
 	bool turnR;
+	void Update ()
+	{
+		if (Input.GetButtonDown ("Jump") && grounded) {
+			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, rigidbody2D.velocity.y + jumpAmount);
+			
+		}
 
+	}
 
 	void FixedUpdate ()
 	{
 		checkG ();
 		float move = Input.GetAxis ("Horizontal");
 		moveX (move);
-		if (Input.GetButtonDown ("Jump") && grounded) {
-			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, rigidbody2D.velocity.y + jumpAmount);
 
-		}
 
 	}
 	public  void moveX (float moveX)

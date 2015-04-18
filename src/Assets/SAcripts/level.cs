@@ -8,15 +8,20 @@ public class level : MonoBehaviour
 	public Transform startPos;
 	public int levelsG;
 	public GameObject lev;
+	public 	static level thisLevel;
 
+	void Awake ()
+	{
+		thisLevel = this;
+	}
 	void Start ()
 	{
-		generateLevels (5);
+		generateLevels (2);
 	
 	}
 	
 
-	void generateLevels (int n)
+	public void generateLevels (int n)
 	{
 
 		for (int i =0; i<n; i++) {

@@ -7,6 +7,7 @@ public class collisionBoost : MonoBehaviour
 	public int MultiplierY;
 	public float boostAmount;
 	public Vector2 dir;
+	int  amount = 0;
 
 
 	public void  boost (Rigidbody2D target)
@@ -18,7 +19,10 @@ public class collisionBoost : MonoBehaviour
 		Vector2 boost = new Vector2 (dir.x * boostAmount, dir.y * (boostAmount));
 		Vector2 force = (tagetVeloMulti + boost);
 		target.AddForceAtPosition (force, transform.position);
-
+		if (amount < 1) {
+			level.thisLevel.generateLevels (1);
+		}
+		amount++;
 	}
 
 }

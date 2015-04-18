@@ -1,8 +1,10 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SAcripts\level.cs">
     <Files>
-      <File FileName="Assets\SAcripts\level.cs" Line="14" Column="20" />
+      <File FileName="Assets\SAcripts\collisionBoost.cs" Line="10" Column="17" />
+      <File FileName="Assets\SAcripts\level.cs" Line="19" Column="20" />
+      <File FileName="Assets\SAcripts\Player.cs" Line="18" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

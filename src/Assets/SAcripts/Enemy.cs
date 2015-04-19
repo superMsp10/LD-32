@@ -13,7 +13,8 @@ public class Enemy : MonoBehaviour
 
 	public Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
 	private bool dead = false;			// Whether or not the enemy is dead.
-
+	public Collider2D thisCollider;
+	public GameObject[] bosyparts;
 	
 	void Awake ()
 	{
@@ -32,6 +33,10 @@ public class Enemy : MonoBehaviour
 				// ... Flip the enemy and stop checking the other colliders.
 				Flip ();
 				break;
+			}
+
+			if (c.tag == "Player") {
+				Hurt ();
 			}
 		}
 
@@ -52,11 +57,20 @@ public class Enemy : MonoBehaviour
 	
 	void Death ()
 	{
-
+		thisCollider.isTrigger = true;
 		dead = true;
 
-		rigidbody2D.fixedAngle = false;
-		rigidbody2D.AddTorque (Random.Range (deathSpinMin, deathSpinMax));
+		foreach (GameObject g in bosyparts) {
+			thisCollider = g.AddComponent<BoxCollider2D> ();
+			g.AddComponent<Rigidbody2D> ();
+			thisCollider.isTrigger = true;
+			g.rigidbody2D.fixedAngle = false;
+			g.rigidbody2D.velocity = new Vector2 (Random.Range (-5, 5) * moveSpeed, Random.Range (-10, 10) * moveSpeed);	
+			g.rigidbody2D.AddTorque (Random.Range (deathSpinMin, deathSpinMax));
+		}
+
+
+		Destroy (gameObject, 3f);
 
 	}
 

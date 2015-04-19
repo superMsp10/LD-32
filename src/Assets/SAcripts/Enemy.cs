@@ -17,13 +17,24 @@ public class Enemy : MonoBehaviour
 	public GameObject[] bosyparts;
 	public GameObject particle;
 	public GameObject particle2;
+	public GameObject explosion;			// Prefab of explosion effect.
+	public LayerMask whatExplode;
+	public float dmg;
+	public ParticleSystem particleIns;
+	public static ParticleSystem explosionFX;		// Reference to the particle system of the explosion effect.
+
 
 	
-	void Awake ()
+	void Start ()
 	{
-		// Setting up the references.
-	}
+		if (explosionFX == null) {
+			
+			GameObject g = (GameObject)Instantiate (particleIns.gameObject);
+			explosionFX = g.particleSystem;
+			
+		}
 
+	}
 	void FixedUpdate ()
 	{
 		// Create an array of all the colliders in front of the enemy.
@@ -96,6 +107,53 @@ public class Enemy : MonoBehaviour
 		}
 
 
+	}
+	public void Explode ()
+	{
+		
+		
+		
+		// Find all the colliders on the Enemies layer within the bombRadius.
+		Collider2D[] enemies = Physics2D.OverlapCircleAll (transform.position, 100, whatExplode);
+		
+		// For each collider...
+		foreach (Collider2D en in enemies) {
+			// Check if it has a rigidbody (since there is only one per enemy, on the parent).
+			if (en.gameObject.GetInstanceID () != gameObject.GetInstanceID ()) {
+				
+				
+				Rigidbody2D rb = en.rigidbody2D;
+				if (rb != null) {
+					// Find the Enemy script and set the enemy's health to zero.
+					
+					float distanceForce;
+					// Find a vector from the bomb to the enemy.
+					Vector3 deltaPos = rb.transform.position - transform.position;
+					if (Vector2.Distance (rb.transform.position, transform.position) < 100) {
+						distanceForce = 100 - Vector2.Distance (rb.transform.position, transform.position);
+					} else {
+						distanceForce = 0f;
+						
+					}
+					// Apply a force in this direction with a magnitude of bombForce.
+					Vector3 force = deltaPos.normalized * 100 * distanceForce;
+					rb.AddForce (force, ForceMode2D.Impulse);
+				
+				}
+				
+			}	
+		}
+		// Set the explosion effect's position to the bomb's position and play the particle system.
+		explosionFX.transform.position = transform.position;
+		explosionFX.Play ();
+		
+		// Instantiate the explosion prefab.
+		Destroy (Instantiate (explosion, transform.position, Quaternion.identity), 0.01f);
+		
+		// Play the explosion sound effect.
+
+		// Destroy the bomb.
+		Destroy (gameObject);
 	}
 
 

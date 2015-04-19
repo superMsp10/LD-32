@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
 	public float moveSpeed;
+	public GameM m;
 	public Transform GroundCheck;
 	public LayerMask whatGround;
 	public bool grounded = false;
@@ -94,7 +95,18 @@ public class Player : MonoBehaviour
 			thisBoost.boost (rigidbody2D);
 		}
 			
-			
+		if (other.gameObject.tag == "pick") {
+			if (other.gameObject.name == "chicken") {
+				m.setleg (1);
+				Destroy (other.gameObject);
+			}
+
+			if (other.gameObject.name == "cash") {
+				m.setCash (1);
+				Destroy (other.gameObject);
+
+			}
+		}
 			
 	}
 		

@@ -53,6 +53,7 @@
      <Compile Include="Assets\SAcripts\Player.cs" />
      <Compile Include="Assets\SAcripts\collisionBoost.cs" />
      <Compile Include="Assets\SAcripts\level.cs" />
+     <Compile Include="Assets\SAcripts\spawner.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>

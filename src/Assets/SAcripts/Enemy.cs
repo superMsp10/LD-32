@@ -86,7 +86,6 @@ public class Enemy : MonoBehaviour
 	void OnCollisionStay2D (Collision2D c)
 	{
 
-		Debug.Log ("hi");
 		if (c.gameObject.tag == "Player") {
 			Hurt ();
 		}

@@ -10,13 +10,21 @@ public class Player : MonoBehaviour
 	public int jumpAmount;
 	public float hp;
 	bool turnR;
+	private Animator thisA;
+
+
+	void Start ()
+	{
+		thisA = GetComponent<Animator> ();
+
+	}
 	void Update ()
 	{
 		if (Input.GetButtonDown ("Jump") && grounded) {
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, rigidbody2D.velocity.y + jumpAmount);
 			
 		}
-
+		updateAnim ();
 	}
 
 	void FixedUpdate ()
@@ -24,6 +32,14 @@ public class Player : MonoBehaviour
 		checkG ();
 		float move = Input.GetAxis ("Horizontal");
 		moveX (move);
+
+
+	}
+
+	void updateAnim ()
+	{
+		thisA.SetFloat ("hSpeed", Mathf.Abs (rigidbody2D.velocity.x));
+		thisA.SetFloat ("vSpeed", rigidbody2D.velocity.y);
 
 
 	}

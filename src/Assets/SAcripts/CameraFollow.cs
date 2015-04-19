@@ -9,13 +9,13 @@ public class CameraFollow : MonoBehaviour
 	public Vector2 minXAndY;		// The minimum x and y coordinates the camera can have.
 
 
-	private Transform player;		// Reference to the player's transform.
+	public Transform player;		// Reference to the player's transform.
 
 
-	void Awake ()
+	void Start ()
 	{
 		// Setting up the reference.
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
+		//player = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 
 
@@ -37,6 +37,7 @@ public class CameraFollow : MonoBehaviour
 	
 	void TrackPlayer ()
 	{
+
 		// By default the target x and y coordinates of the camera are it's current x and y coordinates.
 		float targetX = transform.position.x;
 		float targetY = transform.position.y;
@@ -45,7 +46,7 @@ public class CameraFollow : MonoBehaviour
 	
 		// If the player has moved beyond the y margin...
 		if (CheckYMargin ())
-			// ... the target y coordinate should be a Lerp between the camera's current y position and the player's current y position.
+		// ... the target y coordinate should be a Lerp between the camera's current y position and the player's current y position.
 			targetY = Mathf.Lerp (transform.position.y, player.position.y, ySmooth * Time.deltaTime);
 
 		// The target x and y coordinates should not be larger than the maximum or smaller than the minimum.

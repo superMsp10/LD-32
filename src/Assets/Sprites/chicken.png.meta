@@ -6,6 +6,7 @@ TextureImporter:
     21300002: chicken_body
     21300004: chicken_eg
     21300006: chicken_chop
+    21300008: blood
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

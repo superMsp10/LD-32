@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
 	private bool dead = false;			// Whether or not the enemy is dead.
 	public Collider2D thisCollider;
 	public GameObject[] bosyparts;
+	public GameObject particle;
 	
 	void Awake ()
 	{
@@ -35,9 +36,7 @@ public class Enemy : MonoBehaviour
 				break;
 			}
 
-			if (c.tag == "Player") {
-				Hurt ();
-			}
+
 		}
 
 		// Set the enemy's velocity to moveSpeed in the x direction.
@@ -59,6 +58,7 @@ public class Enemy : MonoBehaviour
 	{
 		thisCollider.isTrigger = true;
 		dead = true;
+		Instantiate (particle, transform.position, Quaternion.identity);
 
 		foreach (GameObject g in bosyparts) {
 			thisCollider = g.AddComponent<BoxCollider2D> ();
@@ -81,5 +81,14 @@ public class Enemy : MonoBehaviour
 		Vector3 enemyScale = transform.localScale;
 		enemyScale.x *= -1;
 		transform.localScale = enemyScale;
+	}
+
+	void OnCollisionStay2D (Collision2D c)
+	{
+
+		Debug.Log ("hi");
+		if (c.gameObject.tag == "Player") {
+			Hurt ();
+		}
 	}
 }

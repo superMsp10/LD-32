@@ -5,6 +5,7 @@ TextureImporter:
     21300000: chicken_head
     21300002: chicken_body
     21300004: chicken_eg
+    21300006: chicken_chop
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -75,6 +76,16 @@ TextureImporter:
         height: 10
       alignment: 2
       pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: chicken_chop
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

@@ -17,7 +17,6 @@ public class spawner : MonoBehaviour
 
 	void Ins ()
 	{
-		Debug.Log ("hi");
 
 		Instantiate (spawn [Random.Range (0, spawn.Length)], transform.position, Quaternion.identity);
 

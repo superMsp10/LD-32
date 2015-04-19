@@ -10,18 +10,13 @@ public class Resource : MonoBehaviour
 	public bool randomDrop;
 
 
-	// Use this for initialization
-	void Start ()
-	{
-		thisRigid = GetComponent<Rigidbody2D> ();
-		if (randomDrop)
-			amount = Random.Range (1, amount);
-	}
-	
 
 
 	public void dropMadeOf ()
 	{
+		thisRigid = GetComponent<Rigidbody2D> ();
+		if (randomDrop)
+			amount = Random.Range (1, amount);
 		for (int i = 0; i < amount; i++) {
 			Vector3 pos = new Vector3 (gameObject.transform.position.x + Random.Range (0, 10)
 			                          , gameObject.transform.position.y);

@@ -86,7 +86,6 @@ public class Player : MonoBehaviour
 	{
 		
 		
-	
 		if (other.gameObject.tag == "boost") {
 			collisionBoost thisBoost = other.gameObject.GetComponent<collisionBoost> ();
 			if (thisBoost == null)
@@ -94,20 +93,17 @@ public class Player : MonoBehaviour
 				
 			thisBoost.boost (rigidbody2D);
 		}
+		if (other.gameObject.tag == "cash") {
+			m.setCash ();
+			Destroy (other.gameObject);
 			
-		if (other.gameObject.tag == "pick") {
-			if (other.gameObject.name == "chicken") {
-				m.setleg (1);
-				Destroy (other.gameObject);
-			}
-
-			if (other.gameObject.name == "cash") {
-				m.setCash (1);
-				Destroy (other.gameObject);
-
-			}
 		}
-			
+		if (other.gameObject.tag == "chicken") {
+			m.setleg ();
+			Destroy (other.gameObject);
+		}
+
+
 	}
 		
 		
@@ -126,6 +122,8 @@ public class Player : MonoBehaviour
 
 		attacking = false;
 	}
+
+
 
 
 }

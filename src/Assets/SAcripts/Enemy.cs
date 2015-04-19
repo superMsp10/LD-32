@@ -84,8 +84,11 @@ public class Enemy : MonoBehaviour
 			g.rigidbody2D.AddTorque (Random.Range (deathSpinMin, deathSpinMax));
 		}
 
-
+		Resource r = GetComponent<Resource> ();
+		if (r != null)
+			r.dropMadeOf ();
 		Destroy (gameObject, 3f);
+
 
 	}
 
@@ -108,6 +111,11 @@ public class Enemy : MonoBehaviour
 
 
 	}
+
+	public void tryEx ()
+	{
+		GameM.thisM.tryExplode (this);
+	}
 	public void Explode ()
 	{
 		
@@ -121,8 +129,9 @@ public class Enemy : MonoBehaviour
 			// Check if it has a rigidbody (since there is only one per enemy, on the parent).
 			if (en.gameObject.GetInstanceID () != gameObject.GetInstanceID ()) {
 				
-				
+
 				Rigidbody2D rb = en.rigidbody2D;
+				Enemy e = en.GetComponent<Enemy> ();
 				if (rb != null) {
 					// Find the Enemy script and set the enemy's health to zero.
 					
@@ -138,7 +147,9 @@ public class Enemy : MonoBehaviour
 					// Apply a force in this direction with a magnitude of bombForce.
 					Vector3 force = deltaPos.normalized * 100 * distanceForce;
 					rb.AddForce (force, ForceMode2D.Impulse);
-				
+					if (e != null) {
+						e.Death ();
+					}
 				}
 				
 			}	

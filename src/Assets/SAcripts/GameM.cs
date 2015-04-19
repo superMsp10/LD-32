@@ -12,15 +12,23 @@ public class GameM : MonoBehaviour
 	bool pause = true;
 	public Text legAmount;
 	public Text cashAmount;
+	public Text noE;
+	public static GameM thisM;
 
 
 
 	public GameObject player;
+
+	void Awake ()
+	{
+		thisM = this;
+
+	}
 	void Start ()
 	{
 		player.SetActive (true);
-		setleg (0);
-		setCash (0);
+		setleg ();
+		setCash ();
 		resetMenu (pause);
 
 
@@ -39,6 +47,25 @@ public class GameM : MonoBehaviour
 		Application.LoadLevel (0);
 	}
 
+	public	void tryExplode (Enemy e)
+	{
+		if (chickenLeg > 5) {
+			e.Explode ();
+			chickenLeg -= 5;
+		} else {
+			noE.gameObject.SetActive (true);
+			Invoke ("resettext", 2f);
+
+		}
+		
+	}
+
+	void resettext ()
+	{
+
+		noE.gameObject.SetActive (false);
+	}
+
 	public void resetMenu (bool puused)
 	{
 
@@ -55,17 +82,17 @@ public class GameM : MonoBehaviour
 		}
 	}
 
-	public void setleg (int amount)
+	public void setleg ()
 	{
-		chickenLeg += amount;
+		chickenLeg ++;
 		legAmount.text = chickenLeg.ToString ();
 
 	}
 
-	public void setCash (int amount)
+	public void setCash ()
 	{
-		cashLeg += amount;
-		cashAmount.text = chickenLeg.ToString ();
+		cashLeg ++;
+		cashAmount.text = cashLeg.ToString ();
 		
 	}
 }

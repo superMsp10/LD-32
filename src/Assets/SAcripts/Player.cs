@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 	public float hp;
 	bool turnR;
 	private Animator thisA;
+	public bool attacking = false;
+	public damage weapon;
 
 
 	void Start ()
@@ -24,8 +26,16 @@ public class Player : MonoBehaviour
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, rigidbody2D.velocity.y + jumpAmount);
 			
 		}
+
+		if (Input.GetButtonDown ("Fire1") && attacking == false) {
+			thisA.SetTrigger ("Attack");
+			weapon.attack = true;
+			Invoke ("resetAt", 0.5f);
+		}
 		updateAnim ();
 	}
+
+
 
 	void FixedUpdate ()
 	{
@@ -36,10 +46,13 @@ public class Player : MonoBehaviour
 
 	}
 
+
+
 	void updateAnim ()
 	{
 		thisA.SetFloat ("hSpeed", Mathf.Abs (rigidbody2D.velocity.x));
 		thisA.SetFloat ("vSpeed", rigidbody2D.velocity.y);
+
 
 
 	}
@@ -86,12 +99,21 @@ public class Player : MonoBehaviour
 	}
 		
 		
-	public virtual void flip ()
+	public  void flip ()
 	{
 		turnR = !turnR;
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
 	}
+
+
+
+	void resetAt ()
+	{
+
+		attacking = false;
+	}
+
 
 }

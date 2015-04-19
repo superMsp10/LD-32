@@ -56,6 +56,7 @@
      <Compile Include="Assets\SAcripts\level.cs" />
      <Compile Include="Assets\SAcripts\pickup.cs" />
      <Compile Include="Assets\SAcripts\spawner.cs" />
+     <Compile Include="Assets\damage.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>

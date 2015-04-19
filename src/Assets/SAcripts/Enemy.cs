@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
 	public Collider2D thisCollider;
 	public GameObject[] bosyparts;
 	public GameObject particle;
+	public GameObject particle2;
+
 	
 	void Awake ()
 	{
@@ -48,13 +50,15 @@ public class Enemy : MonoBehaviour
 			Death ();
 	}
 	
-	public void Hurt ()
+	public void Hurt (int damage)
 	{
 		// Reduce the number of hit points by one.
-		HP--;
+		HP -= damage;
+		Instantiate (particle2, transform.position, Quaternion.identity);
+
 	}
 	
-	void Death ()
+	public	void Death ()
 	{
 		thisCollider.isTrigger = true;
 		dead = true;
@@ -87,7 +91,12 @@ public class Enemy : MonoBehaviour
 	{
 
 		if (c.gameObject.tag == "Player") {
-			Hurt ();
+			Hurt (1);
+
 		}
+
+
 	}
+
+
 }

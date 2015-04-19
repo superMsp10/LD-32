@@ -12,15 +12,6 @@ public class CameraFollow : MonoBehaviour
 	public Transform player;		// Reference to the player's transform.
 
 
-	void Start ()
-	{
-		// Setting up the reference.
-		//player = GameObject.FindGameObjectWithTag ("Player").transform;
-	}
-
-
-
-
 
 	bool CheckYMargin ()
 	{

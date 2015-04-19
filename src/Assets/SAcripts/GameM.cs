@@ -8,7 +8,11 @@ public class GameM : MonoBehaviour
 	GameObject ingame;
 	GameObject paused;
 	public int chickenLeg = 0;
+	public int cashLeg = 0;
+
 	public Text legAmount;
+	public Text cashAmount;
+
 
 
 	public GameObject player;
@@ -16,6 +20,8 @@ public class GameM : MonoBehaviour
 	{
 		player.SetActive (true);
 		setleg (0);
+		setCash (0);
+
 
 	}
 	public void reset ()
@@ -42,5 +48,12 @@ public class GameM : MonoBehaviour
 		chickenLeg += amount;
 		legAmount.text = chickenLeg.ToString ();
 
+	}
+
+	public void setCash (int amount)
+	{
+		cashLeg += amount;
+		cashAmount.text = chickenLeg.ToString ();
+		
 	}
 }

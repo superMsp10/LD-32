@@ -7,6 +7,7 @@ TextureImporter:
     21300004: chicken_eg
     21300006: chicken_chop
     21300008: blood
+    21300010: cash
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -85,6 +86,16 @@ TextureImporter:
         y: 0
         width: 128
         height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cash
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 82
+        width: 43
+        height: 41
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

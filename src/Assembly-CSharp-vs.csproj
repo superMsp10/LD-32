@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\SAcripts\CameraFollow.cs" />
+     <Compile Include="Assets\SAcripts\Destroyer.cs" />
+     <Compile Include="Assets\SAcripts\Enemy.cs" />
      <Compile Include="Assets\SAcripts\GameM.cs" />
      <Compile Include="Assets\SAcripts\Player.cs" />
      <Compile Include="Assets\SAcripts\collisionBoost.cs" />

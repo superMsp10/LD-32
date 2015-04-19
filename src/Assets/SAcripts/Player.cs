@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 	public LayerMask whatGround;
 	public bool grounded = false;
 	public int jumpAmount;
+	public float hp;
 	bool turnR;
 	void Update ()
 	{

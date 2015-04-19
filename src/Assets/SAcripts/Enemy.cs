@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
 	public float moveSpeed = 2f;		// The speed the enemy moves at.
 	public int HP = 2;					// How many times the enemy can be hit before it dies.
+	public Slider HP_slider;
 
 
 	public float deathSpinMin = -100f;			// A value to give the minimum amount of Torque when dying
@@ -31,9 +33,10 @@ public class Enemy : MonoBehaviour
 			
 			GameObject g = (GameObject)Instantiate (particleIns.gameObject);
 			explosionFX = g.particleSystem;
-			
+		
 		}
-
+		HP_slider.maxValue = HP;
+		HP_slider.value = HP;
 	}
 	void FixedUpdate ()
 	{
@@ -66,6 +69,8 @@ public class Enemy : MonoBehaviour
 		// Reduce the number of hit points by one.
 		HP -= damage;
 		Instantiate (particle2, transform.position, Quaternion.identity);
+		HP_slider.value = HP;
+
 
 	}
 	
@@ -106,6 +111,7 @@ public class Enemy : MonoBehaviour
 
 		if (c.gameObject.tag == "Player") {
 			Hurt (1);
+			GameM.thisM.player.takeDmg ();
 
 		}
 

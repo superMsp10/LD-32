@@ -17,7 +17,7 @@ public class GameM : MonoBehaviour
 
 
 
-	public GameObject player;
+	public Player player;
 
 	void Awake ()
 	{
@@ -26,7 +26,6 @@ public class GameM : MonoBehaviour
 	}
 	void Start ()
 	{
-		player.SetActive (true);
 		setleg ();
 		setCash ();
 		resetMenu (pause);
@@ -41,6 +40,12 @@ public class GameM : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			resetMenu (!pause);
 		}
+
+		if (player == null) {
+
+			Invoke ("reset", 2f);
+		}
+
 	}
 	public void reset ()
 	{

@@ -22,7 +22,8 @@ public class CameraFollow : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		TrackPlayer ();
+		if (player != null)
+			TrackPlayer ();
 	}
 	
 	

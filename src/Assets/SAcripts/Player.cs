@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,16 +10,30 @@ public class Player : MonoBehaviour
 	public LayerMask whatGround;
 	public bool grounded = false;
 	public int jumpAmount;
-	public float hp;
 	bool turnR;
 	private Animator thisA;
 	public bool attacking = false;
 	public damage weapon;
-
+	public float HP = 10;
+	public Slider HP_slider;
+	public GameObject[] bosyparts;
+	Collider2D thisCollider;
+	public GameObject particles;
+	bool dead = false;
 
 	void Start ()
 	{
 		thisA = GetComponent<Animator> ();
+		HP_slider.maxValue = HP;
+		HP_slider.value = HP;
+
+
+	}
+
+	public void takeDmg ()
+	{
+		HP--;
+		HP_slider.value = HP;
 
 	}
 	void Update ()
@@ -34,9 +49,26 @@ public class Player : MonoBehaviour
 			Invoke ("resetAt", 0.5f);
 		}
 		updateAnim ();
+
+		if (HP < 0 && !dead) {
+			die ();
+		}
 	}
 
-
+	void die ()
+	{
+		dead = true;
+		Instantiate (particles, transform.position, Quaternion.identity);
+		foreach (GameObject g in bosyparts) {
+			thisCollider = g.AddComponent<BoxCollider2D> ();
+			g.AddComponent<Rigidbody2D> ();
+			thisCollider.isTrigger = true;
+			g.rigidbody2D.fixedAngle = false;
+			g.rigidbody2D.velocity = new Vector2 (Random.Range (-5, 5) * moveSpeed, Random.Range (-10, 10) * moveSpeed);	
+			g.rigidbody2D.AddTorque (Random.Range (-100, 100));
+		}
+		Destroy (gameObject, 2f);
+	}
 
 	void FixedUpdate ()
 	{

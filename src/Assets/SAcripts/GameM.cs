@@ -5,11 +5,11 @@ using UnityEngine.UI;
 public class GameM : MonoBehaviour
 {
 
-	GameObject ingame;
-	GameObject paused;
+	public GameObject ingame;
+	public GameObject paused;
 	public int chickenLeg = 0;
 	public int cashLeg = 0;
-
+	bool pause = true;
 	public Text legAmount;
 	public Text cashAmount;
 
@@ -21,8 +21,18 @@ public class GameM : MonoBehaviour
 		player.SetActive (true);
 		setleg (0);
 		setCash (0);
+		resetMenu (pause);
 
 
+	}
+
+
+	void Update ()
+	{
+
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			resetMenu (!pause);
+		}
 	}
 	public void reset ()
 	{
@@ -35,11 +45,13 @@ public class GameM : MonoBehaviour
 		if (puused) {
 			paused.SetActive (true);
 			ingame.SetActive (false);
-
+			pause = true;
 		} else {
 
 			paused.SetActive (false);
 			ingame.SetActive (true);
+			pause = false;
+
 		}
 	}
 

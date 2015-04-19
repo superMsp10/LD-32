@@ -1,9 +1,10 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SAcripts\Enemy.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SAcripts\GameM.cs">
     <Files>
-      <File FileName="Assets\SAcripts\Player.cs" Line="17" Column="23" />
-      <File FileName="Assets\SAcripts\Enemy.cs" Line="39" Column="24" />
+      <File FileName="Assets\SAcripts\Player.cs" Line="158" Column="1" />
+      <File FileName="Assets\SAcripts\Enemy.cs" Line="95" Column="23" />
+      <File FileName="Assets\SAcripts\GameM.cs" Line="125" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -92,6 +92,7 @@ public class Enemy : MonoBehaviour
 		Resource r = GetComponent<Resource> ();
 		if (r != null)
 			r.dropMadeOf ();
+		GameM.thisM.kills++;
 		Destroy (gameObject, 3f);
 
 

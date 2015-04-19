@@ -13,6 +13,12 @@ public class GameM : MonoBehaviour
 	public Text legAmount;
 	public Text cashAmount;
 	public Text noE;
+	public Text score;
+	public Text Highscore;
+	public bool resetScore = false;
+	private int high = 0;
+	public int kills;
+
 	public static GameM thisM;
 
 
@@ -26,9 +32,15 @@ public class GameM : MonoBehaviour
 	}
 	void Start ()
 	{
+
+		if (resetScore) {
+			PlayerPrefs.DeleteAll ();
+		}
+		high = PlayerPrefs.GetInt ("s", 0);
 		setleg ();
 		setCash ();
 		resetMenu (pause);
+		Highscore.text = high.ToString ();
 
 
 	}
@@ -42,7 +54,8 @@ public class GameM : MonoBehaviour
 		}
 
 		if (player == null) {
-
+			resetMenu (true);
+			score.text = getScore ().ToString ();
 			Invoke ("reset", 2f);
 		}
 
@@ -75,6 +88,7 @@ public class GameM : MonoBehaviour
 	{
 
 		if (puused) {
+			score.text = getScore ().ToString ();
 			paused.SetActive (true);
 			ingame.SetActive (false);
 			pause = true;
@@ -100,4 +114,24 @@ public class GameM : MonoBehaviour
 		cashAmount.text = cashLeg.ToString ();
 		
 	}
+
+	public int getScore ()
+	{
+
+		int i = 0;
+		i = (cashLeg * 100 + kills * 100);
+
+		if (i > high) {
+			PlayerPrefs.SetInt ("s", i);
+
+			Debug.Log (i);
+		}
+		return i;
+		
+	}
+
+	void OnDestroy ()
+	{
+	}
+
 }

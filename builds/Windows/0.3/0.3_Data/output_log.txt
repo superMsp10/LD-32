@@ -12,9 +12,21 @@ Platform assembly: M:\ProducedGames\LD-32\builds\Windows\0.3\0.3_Data\Managed\As
 Loading M:\ProducedGames\LD-32\builds\Windows\0.3\0.3_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: M:\ProducedGames\LD-32\builds\Windows\0.3\0.3_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading M:\ProducedGames\LD-32\builds\Windows\0.3\0.3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.070 seconds
+- Completed reload, in  0.053 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 Platform assembly: M:\ProducedGames\LD-32\builds\Windows\0.3\0.3_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: M:\ProducedGames\LD-32\builds\Windows\0.3\0.3_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 3.370598 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 621.
+Total: 1.087875 ms (FindLiveObjects: 0.033946 ms CreateObjectMapping: 0.019341 ms MarkObjects: 0.339467 ms  DeleteObjects: 0.008289 ms)
+
+UnloadTime: 1.384317 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 621.
+Total: 1.370107 ms (FindLiveObjects: 0.024078 ms CreateObjectMapping: 0.014999 ms MarkObjects: 0.382493 ms  DeleteObjects: 0.005526 ms)
+

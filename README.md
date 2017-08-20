@@ -1,5 +1,5 @@
 # LD-32
-My entry for Ludum Dare 31
+My entry for Ludum Dare 32
 
 slaughter the to lamb
 
